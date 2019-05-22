@@ -117,7 +117,7 @@
 
 <script>
 import BMap from 'BMap'
-import { XHeader,Flexbox, FlexboxItem,Group,CellBox,Cell,XButton, Rater} from 'vux'
+import { XHeader,Flexbox, FlexboxItem,Group,CellBox,Cell,XButton, Rater,Toast} from 'vux'
 import {organDetails,blogs, star} from 'src/service/api'
 import { getStore, setStore } from 'src/config/mUtils'
 
@@ -130,7 +130,8 @@ export default {
     Cell,
     Rater,
     CellBox,
-    XButton
+    XButton,
+    Toast
   },
   data () {
     return {
@@ -170,7 +171,14 @@ export default {
       if(this.username){
         this.$router.push({path:'/step2',query:{name:name,id:id}});
       }else{
-        this.$router.push({path:'/login'});
+        this.$vux.toast.show({
+          text: '请先登录',
+          type:'text',
+          position: 'middle'
+        })
+        setTimeout(()=>{
+          this.$router.push({path:'/login'});
+        },2000)
       }
     },
     toBdmap(){
