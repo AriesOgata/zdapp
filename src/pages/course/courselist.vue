@@ -64,7 +64,6 @@
 
 <script>
 import { Tab, TabItem, Popup, XSwitch, Cell, Group, XButton,TransferDom ,XHeader, } from 'vux'
-
 export default {
   	name: 'course',
 	components: {
@@ -128,7 +127,7 @@ export default {
 .header-btn{
     margin: 0 auto;
 	  font-size: .8rem;
-    text-align: center; 
+    text-align: center;
 }
 .in-b{
     font-size: .6rem;
