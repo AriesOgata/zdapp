@@ -60,7 +60,7 @@
     <!--form提交 S-->
     <div id="ex-sub">
     	<group>
-	      <x-input title="姓名" name="username" placeholder="请输入姓名" is-type="china-name" v-model="username"></x-input>
+	      <x-input title="姓名" name="truename" placeholder="请输入姓名" is-type="china-name" v-model="truename"></x-input>
 	    </group>
 	    <group>
 	   		<div id="sex1">
@@ -100,7 +100,7 @@
 			        <x-table full-bordered style="background-color:#fff;" id="ex-tables">
 			            <tr>
 			              <td>姓名</td>
-			              <td colspan="3">{{username}}</td>
+			              <td colspan="3">{{truename}}</td>
 			            </tr>
 			             <tr>
 			              <td>手机号码</td>
@@ -141,6 +141,7 @@
 import {enroll} from 'src/service/api';
 import {enrollTwo} from 'src/service/api';
 import {enrollThree,yzmGet,apply} from 'src/service/api';
+import { getStore, setStore } from 'src/config/mUtils'
 import {
 		XDialog,
 		XButton,
@@ -177,6 +178,7 @@ export default {
   },
   data () {
     return {
+			username:'',
     	work3:'',
     	onplace:'',
     	companyid:'',
@@ -199,7 +201,7 @@ export default {
 		active1:'',
 		active2:'',
 		active3:'',
-		username:'',
+		truename:'',
 		mobile:'',
 		vcode:'',
 		sex:'',
@@ -209,6 +211,7 @@ export default {
      }
   },
   mounted(){
+		this.username=getStore("user");
   	this.jgname=this.$route.query.name;
   },
   methods:{
@@ -317,7 +320,7 @@ export default {
 		}
 	},
 	baoming(){
-		let username = this.username;
+		let truename = this.truename;
 		let mobile = this.mobile;
 		let vcode = this.vcode;
 		let gzcouse = this.gzcouse;
@@ -327,7 +330,7 @@ export default {
 				type:'text',
 				position: 'middle'
 			})
-		}else if(username == ''){
+		}else if(truename == ''){
 			this.$vux.toast.show({
 				text: '请填写姓名',
 				type:'text',
@@ -354,7 +357,7 @@ export default {
 		}else{
 			this.showToast = true;
 		}
-		//console.log(this.username);
+		//console.log(this.truename);
 	},
 	removecourse(e){
 		for(let key in this.gzcouse){
@@ -371,7 +374,7 @@ export default {
 			ids[key] = this.gzcouse[key].id;
 		}
 		console.log(ids);
-		apply({company_id:this.companyid,user_nickname:this.username,sex:this.sex,mobile:this.mobile,code:this.vcode,course_ids:ids}).then(res=>{
+		apply({username:this.username,company_id:this.companyid,user_nickname:this.truename,sex:this.sex,mobile:this.mobile,code:this.vcode,course_ids:ids}).then(res=>{
 			console.log(res);
 			let data = res.data;
 			if(res.code == 0){
