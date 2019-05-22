@@ -374,7 +374,7 @@ export default {
 			ids[key] = this.gzcouse[key].id;
 		}
 		console.log(ids);
-		apply({username:this.username,company_id:this.companyid,user_nickname:this.truename,sex:this.sex,mobile:this.mobile,code:this.vcode,course_ids:ids}).then(res=>{
+		apply({username:this.username,company_id:this.companyid,truename:this.truename,sex:this.sex,mobile:this.mobile,code:this.vcode,course_ids:ids}).then(res=>{
 			console.log(res);
 			let data = res.data;
 			if(res.code == 0){
