@@ -25,7 +25,7 @@
       <div class="module_block_list">
          <router-link to="/organ" class="module_block_a">
             <img src="../../images/icon1.png" alt="">
-            <p>在线报名</p>
+            <p>11111</p>
          </router-link>
          <router-link to="/learning" class="module_block_a">
             <img src="../../images/icon2.png" alt="">
