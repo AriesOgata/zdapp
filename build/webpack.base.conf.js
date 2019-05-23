@@ -41,6 +41,7 @@ let webpackConfig = module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       'src': path.resolve(__dirname, '../src'),
       '@': resolve('src'),
+      'mui': path.resolve(__dirname, '../src/lib/mui/js/mui.js')
     }
   },
   module: {
