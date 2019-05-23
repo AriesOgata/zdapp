@@ -81,7 +81,7 @@
 <script>
 import footNav from 'src/components/footNav'
 import {Flexbox, FlexboxItem, Group,Cell,} from 'vux'
-import {loginCheck} from 'src/service/api';
+import {loginCheck,logout} from 'src/service/api';
 import {setStore,getStore,removeStore} from 'src/config/mUtils'
 
 export default {
@@ -107,15 +107,17 @@ export default {
     },
      //退出登录
     loginout() {
-      removeStore("user");
-      this.$vux.toast.show({
-              text: '退出成功',
-              type:'text',
-              position: 'middle'
-      })
-      setTimeout(() => {
-        this.$router.push("/home");
-      }, 1000);
+      logout({}).then(res=>{
+        removeStore("user");
+        this.$vux.toast.show({
+                text: '退出成功',
+                type:'text',
+                position: 'middle'
+        }),
+        setTimeout(() => {
+          this.$router.push("/home");
+        }, 1000);
+      });
     },
     login(){
       loginCheck({}).then(res=>{

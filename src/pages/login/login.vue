@@ -77,7 +77,8 @@
         }
         
         loginForm({username:name,password:pass}).then(res=>{
-        	let data=res.data;
+          let data=res.data;
+          console.log(res);
           if(res.code == 0){
             this.$vux.toast.show({
             text: '手机号或者密码错误',

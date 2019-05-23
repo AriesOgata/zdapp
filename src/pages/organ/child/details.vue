@@ -118,7 +118,7 @@
 <script>
 import BMap from 'BMap'
 import { XHeader,Flexbox, FlexboxItem,Group,CellBox,Cell,XButton, Rater,Toast} from 'vux'
-import {organDetails,blogs, star} from 'src/service/api'
+import {organDetails,blogs, star,loginCheck} from 'src/service/api'
 import { getStore, setStore } from 'src/config/mUtils'
 
 export default {
@@ -168,18 +168,22 @@ export default {
     toStepTwo(){
       let name = this.organ.name;
       let id = this.organ.id;
-      if(this.username){
-        this.$router.push({path:'/step2',query:{name:name,id:id}});
-      }else{
-        this.$vux.toast.show({
-          text: '请先登录',
-          type:'text',
-          position: 'middle'
-        })
-        setTimeout(()=>{
-          this.$router.push({path:'/login'});
-        },2000)
-      }
+      loginCheck({username:this.username}).then(res=>{
+        let data=res.data;
+          console.log(res);
+          if(res.code == 0){
+            this.$vux.toast.show({
+              text: '请先登录',
+              type:'text',
+              position: 'middle'
+            })
+            setTimeout(()=>{
+              this.$router.push({path:'/login'});
+            },2000)
+          }else if(res.code == 1){
+            this.$router.push({path:'/step2',query:{name:name,id:id}});
+          }
+      }); 
     },
     toBdmap(){
       this.$router.push({path:'/bdmap',query:{longitude:this.organ.longitude,latitude:this.organ.latitude}});
