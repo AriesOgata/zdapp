@@ -6,64 +6,47 @@
         课程列表
       </x-header>
     </div>
-	<tab :line-width = '1'>
-      <tab-item v-for="item in types" :key="item.id" :selected="item.id===1">{{item.title}}</tab-item>
+
+    <tab :line-width = '1'>
+      <tab-item v-for="(item,index) in newslist" :key="item.id" :selected="item.id===1" @on-item-click="tab(index)" >{{item.name}}</tab-item>
     </tab>
-        <div class="course_list">
-          <ul>
-            <li class="course_li" @click="toDetail">
-              <section >
-                <img src="../../images/banner.png" alt="" class="course_img">
-              </section>
-              <div class="course_txt">
-                <p class="course_txt_title">
-                  <span class="ellipsis">制冷与空调安装维修</span>
-                  <i></i>
-                </p>
-                <p class="course_price">￥850</p>
-                <div class="course_class">
-                  <span>制冷空调(初训)</span>
-                </div>
-                <div class="course_box_btn">
-                  <router-link :to="{path: '/', query: {}}"  class="course_btn">
-                    试听
-                  </router-link>
-                  <router-link :to="{path: '/', query: {}}"  class="course_btn">
-                    购买
-                  </router-link>
-                </div>
+
+
+      <div class="course_list" v-for="(item,index) in newslist" v-show="index==num">
+        <ul>
+          <li class="course_li" @click="toDetail" v-for="row in item.children">
+            <section >
+              <img src="../../images/banner.png" alt="" class="course_img">
+            </section>
+            <div class="course_txt">
+              <p class="course_txt_title">
+                <span class="ellipsis">{{row.name}}</span>
+                <i></i>
+              </p>
+              <p class="course_price">￥850</p>
+              <div class="course_class">
+                <span>{{item.name}}</span>
               </div>
-            </li>
-            <li class="course_li" @click="toDetail">
-              <section >
-                <img src="../../images/banner.png" alt="" class="course_img">
-              </section>
-              <div class="course_txt">
-                <p class="course_txt_title">
-                  <span class="ellipsis">制冷与空调安装维修</span>
-                  <i></i>
-                </p>
-                <p class="course_price">￥850</p>
-                <div class="course_class">
-                  <span>制冷空调(初训)</span>
-                </div>
-                <div class="course_box_btn">
-                  <router-link :to="{path: '/', query: {}}"  class="course_btn">
-                    试听
-                  </router-link>
-                  <router-link :to="{path: '/', query: {}}"  class="course_btn">
-                    购买
-                  </router-link>
-                </div>
+              <div class="course_box_btn">
+                <router-link :to="{path: '/', query: {}}"  class="course_btn">
+                  试听
+                </router-link>
+                <router-link :to="{path: '/', query: {}}"  class="course_btn">
+                  购买
+                </router-link>
               </div>
-            </li>
-          </ul>
-        </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
   </div>
 </template>
 
 <script>
+  import {showlist,enrollThree} from 'src/service/api'
 import { Tab, TabItem, Popup, XSwitch, Cell, Group, XButton,TransferDom ,XHeader, } from 'vux'
+
 export default {
   	name: 'course',
 	components: {
@@ -74,14 +57,17 @@ export default {
 	    Cell,
 	    Group,
 			XButton,
-			XHeader
+			XHeader,
 	},
 	data(){
 		return{
 			types:[{id:1,title:'电工作业'},{id:2,title:'制冷与空调作业'},{id:3,title:'高处作业'},{id:4,title:'焊接热切割'},{id:5,title:'电工'}],
-			borderColor: {
+      num:1,
+      newslist:[],
+      borderColor: {
         borderColor: '#333'
       },
+      id:''
 		}
 	},
 	methods:{
@@ -90,8 +76,17 @@ export default {
 		},
 		toDetail(){
 			this.$router.push("/courseDetail");
-		}
-	}
+		},
+    tab(index){
+		  this.num=index
+    }
+  },
+  mounted(){
+    showlist().then(res => {
+      this.newslist = res.data;
+    })
+  }
+
 }
 </script>
 
@@ -107,39 +102,39 @@ export default {
   transform: rotate(315deg);
   top: 5px;
 }
-.test-header{
+  .test-header{
     width: 100%;
     height: 1.8rem;
     padding: .3rem .5rem;
     background-color: rgb(245, 245, 245);
     border-bottom: 1px solid #ccc;
-}
-.back-img{
+  }
+  .back-img{
     float: left;
     height: 1rem;
     width: 1rem;
-}
-.set-img{
+  }
+  .set-img{
     float: right;
     height: 1rem;
     width: 1rem;
-}
-.header-btn{
+  }
+  .header-btn{
     margin: 0 auto;
-	  font-size: .8rem;
+    font-size: .8rem;
     text-align: center;
-}
-.in-b{
+  }
+  .in-b{
     font-size: .6rem;
     float: left;
     width: 4rem;
     text-align: center;
     line-height: 1.1rem;
-}
-.bg-choo{
+  }
+  .bg-choo{
     background: #000;
     color: #fff;
-}
+  }
 	.course_list{
 		background: #fff;
 	}
@@ -156,7 +151,7 @@ export default {
 		margin-right: .5rem;
 	}
 	.course_txt{
-		width: 100%;
+		width: 60%;
 		position: relative;
 		text-align:left;
 	}
@@ -186,6 +181,7 @@ export default {
 	.course_price{
 		font-size: .6rem;
 		line-height: 1.5rem;
+
 	}
 	.course_class{
 		font-size: .6rem;
@@ -194,7 +190,7 @@ export default {
 	.course_box_btn{
 		position: absolute;
 		right: 0;
-		bottom: .1rem;
+		bottom: 1.1rem;
 	}
 	.course_btn{
 		font-size: .5rem;

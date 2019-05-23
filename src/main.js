@@ -6,8 +6,10 @@ import router from './router'
 import store from './store/'
 import ajax from './config/ajax'
 import './config/rem'
+import './lib/mui/js/mui'
 import '@/assets/css/app.css'/*引入公共样式*/
 import '@/assets/css/bdmap.css'/*引入公共样式*/
+import '@/lib/mui/css/mui.min.css'
 import { ToastPlugin} from 'vux'
 
 Vue.use(ToastPlugin)
