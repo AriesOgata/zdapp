@@ -59,7 +59,7 @@
           </div>
           <div class="learning_box_list" @click="toSc">
             <img src="../../images/test_icon5.png" alt="" class="learning_box_list_icon">
-            <span>收藏</span>
+            <span>课程收藏</span>
           </div>
         </flexbox-item>
       </flexbox>
