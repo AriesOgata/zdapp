@@ -41,7 +41,7 @@ URL
 
 > | 参数 | 必选 | 类型 | 说明 |
 > | :--- | :--- | :--- | ---- |
-> | 无   |      |      |      |
+> | parent_id   |   否   |   int   |  默认为零 零为1级分类    |
 
 业务相关数据
 
@@ -58,7 +58,7 @@ URL
 
 > 接口示例
 >
-> 地址：http://zdapp.808w.com/app/news/indexlist
+> 地址：http://zdapp.808w.com/app/news/indexlist?parent_id=1
 
 ``` javascript
 
