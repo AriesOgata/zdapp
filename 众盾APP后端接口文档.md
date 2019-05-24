@@ -937,7 +937,7 @@ URL
 > | 参数   | 必选 | 类型   | 说明                             |
 > | :----- | :--- | :----- | -------------------------------- |
 > | username | 是   | str    | 用户名                           |
-> | course_id | 是   | int    | 课程id |
+> | courseid | 是   | int    | 课程id |
 
 
 业务相关数据
@@ -950,7 +950,47 @@ URL
 
 > 接口示例
 
-> 地址：http://zdapp.808w.com/app/my_course/checkcourse/username/admin/course_id/1
+> 地址：http://zdapp.808w.com/app/my_course/checkcourse/username/admin/courseid/1
+
+```javascript
+
+```
+
+------
+
+### 7.检查课程是否购买接口
+
+URL
+
+> http://zdapp.808w.com/app/my_course/player
+
+
+接口功能
+
+> ```
+> 的订单列表
+> ```
+
+请求参数
+
+> | 参数   | 必选 | 类型   | 说明                             |
+> | :----- | :--- | :----- | -------------------------------- |
+> | username | 是   | str    | 用户名                           |
+> | courseid | 是   | int    | 课程id |
+> | lessonid | 是   | int    | 课程id |
+
+
+业务相关数据
+
+> | 数组字段 | 字段类型 | 说明                         |
+> | :------- | :------- | :--------------------------- |
+> | code     | int      | 状态（0失败，1成功） |
+> | msg      | string   | 返回的信息                   |
+> | data      | string   | 返回的数据                   |
+
+> 接口示例
+
+> 地址：http://zdapp.808w.com/app/my_course/player/username/admin/courseid/1/lessonid/1
 
 ```javascript
 
