@@ -7,7 +7,10 @@
         我的订单
       </x-header>
     </div>
-    <div class="order_box">
+  <tab>
+    <tab-item v-for="(item,index) in types" :selected="item.id===1" @on-item-click="tab(index)">{{item.title}}</tab-item>
+  </tab>
+    <div class="order_box" v-for="(item,index) in types"  v-show="index==num">
         <div class="order_list clear">
             <div class="order_txt clear">
                 <div class="order_txt_left">
@@ -19,7 +22,7 @@
                 </div>
             </div>
             <div class="order_btn ">
-                <span class="order_btn_style order_btn_show">未支付</span>
+                <span class="order_btn_style order_btn_show">{{item.title}}</span>
                 <span class="order_btn_style order_btn_color">删除订单</span>
             </div>
         </div>
@@ -43,12 +46,12 @@
 </template>
 
 <script>
-import { XHeader} from 'vux'
+import { XHeader,Tab,TabItem} from 'vux'
 
 export default {
 //import引入的组件需要注入到对象中才能使用
 components: {
-    XHeader
+    XHeader,Tab,TabItem
 },
 data() {
 //这里存放数据
@@ -56,6 +59,8 @@ return {
      borderColor: {
         borderColor: '#333'
       },
+  types:[{id:1,title:'未支付'},{id:2,title:'已支付'},],
+  num:1,
 };
 },
 //监听属性 类似于data概念
@@ -67,6 +72,9 @@ methods: {
       back(){
         this.$router.go(-1);//返回上一层
     },
+  tab(index){
+    this.num=index
+  }
 },
 //生命周期 - 创建完成（可以访问当前this实例）
 created() {

@@ -3,7 +3,7 @@
       <div class="hecen">
         <x-header :left-options="{backText: ''}"  style="background-color:rgba(0,0,0,0);">
           <a class="goBack"  v-on:click="back"></a>
-          收藏
+          课程收藏
         </x-header>
         <div class="content">
             <div class="con1">
@@ -12,28 +12,36 @@
                 <p>累计收藏</p>
               </div>
             </div>
-            <div class="con2">
-              <div>
-                <p>今日收藏</p>
-              </div>
-              <div>
-                <p>全部收藏</p>
-              </div>
-            </div>
         </div>
       </div>
-      <div class="lb">
-        <ul>
-          <li>
-            <p>职业道德与服务规范</p>
-            <p>1 <span>></span></p>
-          </li>
-          <li>
-            <p>汽车使用与常见故障处理</p>
-            <p>1 <span>></span></p>
-          </li>
-        </ul>
-      </div>
+
+    <div class="course_list">
+      <ul>
+        <li class="course_li" @click="toDetail">
+          <section >
+            <img src="../../images/banner.png" alt="" class="course_img">
+          </section>
+          <div class="course_txt">
+            <p class="course_txt_title">
+              <span class="ellipsis">低压电工</span>
+              <i></i>
+            </p>
+            <p class="course_price">￥850</p>
+            <div class="course_class">
+              <span>电工作业</span>
+            </div>
+            <div class="course_box_btn">
+              <router-link :to="{path: '/', query: {}}"  class="course_btn">
+                试听
+              </router-link>
+              <router-link :to="{path: '/', query: {}}"  class="course_btn">
+                购买
+              </router-link>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
     <div class="but">
       清空我的收藏
     </div>
@@ -57,6 +65,9 @@
       methods:{
         back(){
           this.$router.go(-1);//返回上一层
+        },
+        toDetail(){
+          this.$router.push("/courseDetail");
         },
       }
     }
@@ -112,21 +123,6 @@
   .content .con1>div p:nth-child(2){
     font-size: 0.7rem;
   }
-  .content .con2{
-    display: flex;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-  }
-  .content .con2 div{
-    width: 30%;
-    height: 1.5rem;
-    background-color: white;
-    color: rgb(36,196,104);
-    border-radius: 1rem;
-    font-size: 0.7rem;
-    text-align: center;
-    line-height: 1.5rem;
-  }
   .lb ul li{
     border-bottom:1px solid rgb(233,233,233);
     display: flex;
@@ -156,5 +152,71 @@
     line-height: 1.5rem;
     text-align: center;
     font-size: 0.7rem;
+  }
+  .course_list{
+    background: #fff;
+  }
+  .course_li{
+    display: -ms-flexbox;
+    display: flex;
+    border-bottom: .025rem solid #f1f1f1;
+    padding: .7rem .8rem;
+  }
+  .course_img{
+    width: 5rem;
+    height: 3rem;
+    display: block;
+    margin-right: .5rem;
+  }
+  .course_txt{
+    width: 60%;
+    position: relative;
+    text-align:left;
+  }
+  .course_txt_title{
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-pack: justify;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    font-size: .5rem;
+    color: #333;
+  }
+  .course_txt_title i{
+    float:right;
+    width: 3rem;
+    background: url(../../images/course_icon.png) no-repeat;
+    background-size: 100% 100%;
+  }
+  .course_txt_title span{
+    font-size: .6rem;
+    font-weight: bold;
+    display: block;
+    width: 70%;
+    text-align: left;
+  }
+  .course_price{
+    font-size: .6rem;
+    line-height: 1.5rem;
+
+  }
+  .course_class{
+    font-size: .6rem;
+    color: #656565;
+  }
+  .course_box_btn{
+    position: absolute;
+    right: 0;
+    bottom: 1.1rem;
+  }
+  .course_btn{
+    font-size: .5rem;
+    color: #5ebf83;
+    border: 1px solid #5ebf83;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-left: .2rem;
+    padding: .1rem .3rem;
   }
 </style>
