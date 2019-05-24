@@ -309,7 +309,7 @@ URL
 
 > 接口示例
 
-> 地址：http://zdapp.808w.com/app/course/info
+> 地址：http://zdapp.808w.com/app/course/info/
 
 ```javascript
 
