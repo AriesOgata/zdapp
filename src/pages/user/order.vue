@@ -8,7 +8,7 @@
       </x-header>
     </div>
   <tab>
-    <tab-item v-for="(item,index) in types" :selected="item.id===1" @on-item-click="tab(index)">{{item.title}}</tab-item>
+    <tab-item v-for="(item,index) in types" :key="item.id" :selected="item.id===1" @on-item-click="tab(index)">{{item.title}}</tab-item>
   </tab>
     <div class="order_box" v-for="(item,index) in types"  v-show="index==num">
         <div class="order_list clear">

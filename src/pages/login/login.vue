@@ -81,7 +81,7 @@
           console.log(res);
           if(res.code == 0){
             this.$vux.toast.show({
-            text: '手机号或者密码错误',
+            text: res.msg,
             type:'text',
             position: 'middle'
           })
@@ -150,7 +150,7 @@ body,html{
   line-height: 2rem;
 }
 .input_container input{
-  font-size: .6rem;
+  font-size: .8rem;
   width: 100%;
 }
 .pwd_img{
