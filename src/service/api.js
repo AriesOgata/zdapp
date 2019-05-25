@@ -96,7 +96,10 @@ export const pay = (params) => fetch('POST','/pay/alipay/index',params);
 //机构评论总星级
 export const star = (params) => fetch('POST','/app/company/companyRemark',params);
 //推出登录
-export const logout = (params) => fetch('POST','/app/login/logout');
+export const logout = (params) => fetch('POST','/app/login/logout',params);
+
+//工种课程内容
+export const Info = (params) => fetch('GET','/app/course/info',params);
 
 
 

@@ -18,20 +18,20 @@
       <section @click = "toOrgan" class="footer_nav_item">
         <p class="buy-btn">立即购买</p>
       </section>
-    
+
     </div>
 	<video width="335" height="200" controls id="video-play" class="video-play">
 		<source src="http://dyx.anpeiw.com/ejfg08%E4%BA%8C%E5%BB%BA%E6%B3%95%E8%A7%843-3%20%E6%97%A0.mp4" type="video/mp4">
 		您的浏览器不支持Video标签。
 	</video>
 	<div class="video-column">
-		
+
 		<div class="dianz"><img src="../../images/couer_icon2.png" class="dianz-img"><span>1234</span></div>
 		<div class="share"><img src="../../images/send.png" class="share-img"><span>分享</span></div>
 		<div class="clearfix"></div>
 	</div>
 	<div class="video-title">
-		制冷与空调设备安装维修作业--陈老师
+		{{infoList.title}}
 	</div>
 	<tab :line-width="1" active-color='#5ebf83' custom-bar-width="50px" >
         <tab-item selected @on-item-click="onItemClick">目录</tab-item>
@@ -56,6 +56,7 @@
   		</div>
   		<div v-else-if="showIndex == 1" class="course-intro">
 			制冷与空调设备安装维修作业--陈老师
+
   		</div>
   		<div v-else class="course-list">
 			<p class="course-like">观看该课程的人还喜欢</p>
@@ -114,7 +115,7 @@
 
 <script>
 import { XHeader, Tab, TabItem, Popup, XSwitch, Cell, Group, XButton,TransferDom  } from 'vux'
-
+import {Info} from 'src/service/api'
 export default {
   	name: 'course',
 	components: {
@@ -134,8 +135,15 @@ export default {
 			borderColor: {
 	        	borderColor: '#333'
 	      },
+      infoList:[]
 		}
 	},
+  mounted(){
+    Info({id:this.$route.query.id}).then(res=>{
+      this.infoList=res.data.course
+      console.log(this.infoList);
+    })
+  },
 	methods:{
 		onItemClick(index){
 			console.log(index);
