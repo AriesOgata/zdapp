@@ -15,7 +15,7 @@
     <div class="learning_box">
       <flexbox :gutter="0" wrap="wrap" class="video_box">
         <flexbox-item :span="3">
-          <div class="learning_box_list" @click="toCourse()">
+          <div class="learning_box_list" @click="toStepTwo()">
             <img src="../../images/video_icon2.jpg" alt="我的课程" class="learning_box_list_icon">
             <span>我的课程</span>
           </div>
@@ -69,8 +69,10 @@
 </template>
 
 <script>
-import { XHeader,Flexbox, FlexboxItem,Swiper,SwiperItem} from 'vux'
+import { XHeader,Flexbox, FlexboxItem,Swiper,SwiperItem,Toast} from 'vux'
 import footNav from 'src/components/footNav'
+import {loginCheck} from 'src/service/api'
+import { getStore } from 'src/config/mUtils'
 export default {
   components: {
     XHeader,
@@ -78,13 +80,15 @@ export default {
     FlexboxItem,
     Swiper,
     SwiperItem,
-    footNav
+    footNav,
+    Toast
   },
   data () {
     return {
        borderColor: {
         borderColor: '#333'
       },
+      username:''
     }
   },
   methods:{
@@ -114,7 +118,26 @@ export default {
   },
   toStxue(){
     this.$router.push('/stxue')
-  }
+  },
+    toStepTwo(){
+      loginCheck({username:this.username}).then(res=>{
+        if(res.code == 0){
+          this.$vux.toast.show({
+            text: '请先登录',
+            type:'text',
+            position: 'middle'
+          })
+          setTimeout(()=>{
+            this.$router.push({path:'/login'});
+          },1000)
+        }else if(res.code == 1){
+          this.$router.push({path:'/mycourse'});
+        }
+      });
+    },
+  },
+  mounted(){
+    this.username = getStore("user");
   }
 }
 </script>

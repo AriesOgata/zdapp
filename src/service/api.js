@@ -98,8 +98,12 @@ export const star = (params) => fetch('POST','/app/company/companyRemark',params
 //推出登录
 export const logout = (params) => fetch('POST','/app/login/logout',params);
 
+//课程列表接口
+export const courseList = (params) => fetch('GET','/app/course/courseshow',params);
 //工种课程内容
 export const Info = (params) => fetch('GET','/app/course/info',params);
+//我的课程接口
+export const myCourse = (params) => fetch('POST','/app/my_course/index/username/admint',params);
 
 
 

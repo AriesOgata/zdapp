@@ -20,7 +20,7 @@
             </section>
             <div class="course_txt">
               <p class="course_txt_title">
-                <span class="ellipsis">{{row.name}}</span>
+                <span class="ellipsis">{{row.title}}</span>
                 <i></i>
               </p>
               <p class="course_price">￥850</p>
@@ -28,10 +28,10 @@
                 <span>{{item.name}}</span>
               </div>
               <div class="course_box_btn">
-                <router-link :to="{ path: '/courseDetail', query: {id:item.id}}"   class="course_btn">
+                <router-link :to="{ path: '/courseDetail', query: {id:row.id}}"   class="course_btn">
                   试听
                 </router-link>
-                <router-link :to="{ path: '/courseDetail', query: {id:item.id}}"   class="course_btn">
+                <router-link :to="{ path: '/courseDetail', query: {id:row.id}}"   class="course_btn">
                   购买
                 </router-link>
               </div>
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-  import {showlist,enrollThree} from 'src/service/api'
+  import {courseList} from 'src/service/api'
 import { Tab, TabItem, Popup, XSwitch, Cell, Group, XButton,TransferDom ,XHeader, } from 'vux'
 
 export default {
@@ -61,10 +61,8 @@ export default {
 	},
 	data(){
 		return{
-			types:[{id:1,title:'电工作业'},{id:2,title:'制冷与空调作业'},{id:3,title:'高处作业'},{id:4,title:'焊接热切割'},{id:5,title:'电工'}],
       num:1,
       newslist:[],
-      newslistAll:[],
       borderColor: {
         borderColor: '#333'
       },
@@ -84,8 +82,9 @@ export default {
     }
   },
   mounted(){
-    showlist().then(res => {
-      this.newslist = res.data;
+    courseList().then(res => {
+      this.newslist = res.data
+      console.log(this.newslist);
     })
   }
 
