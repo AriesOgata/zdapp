@@ -104,6 +104,12 @@ export const courseList = (params) => fetch('GET','/app/course/courseshow',param
 export const Info = (params) => fetch('GET','/app/course/info',params);
 //我的课程接口
 export const myCourse = (params) => fetch('POST','/app/my_course/index/username/admint',params);
+//课程收藏接口
+export const mySc = (params) => fetch('POST','/app/my_course/course_favorite/username/admin',params);
+//删除收藏
+export const deletSc = (params) => fetch('POST','/app/my_course/course_del__favorite',params);
+//我的订单接口
+export const myOrder = (params) => fetch('POST','/app/order/index/username/admin',params);
 
 
 

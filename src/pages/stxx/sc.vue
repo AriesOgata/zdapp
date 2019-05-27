@@ -8,7 +8,7 @@
         <div class="content">
             <div class="con1">
               <div>
-                <p>2</p>
+                <p>0</p>
                 <p>累计收藏</p>
               </div>
             </div>
@@ -17,13 +17,13 @@
 
     <div class="course_list">
       <ul>
-        <li class="course_li" @click="toDetail">
+        <li class="course_li" @click="toDetail" v-for="item in scList">
           <section >
             <img src="../../images/banner.png" alt="" class="course_img">
           </section>
           <div class="course_txt">
             <p class="course_txt_title">
-              <span class="ellipsis">低压电工</span>
+              <span class="ellipsis">{{item.title}}</span>
               <i></i>
             </p>
             <p class="course_price">￥850</p>
@@ -32,11 +32,11 @@
             </div>
             <div class="course_box_btn">
               <router-link :to="{path: '/', query: {}}"  class="course_btn">
-                试听
+                播放
               </router-link>
-              <router-link :to="{path: '/', query: {}}"  class="course_btn">
-                购买
-              </router-link>
+              <a href="" class="course_btn" @click="deletsc(item.id)">
+                删除
+              </a>
             </div>
           </div>
         </li>
@@ -50,6 +50,7 @@
 
 <script>
   import { XHeader, Tab, TabItem, Popup, XSwitch, Cell, Group, XButton,TransferDom  } from 'vux'
+  import {mySc,deletSc} from 'src/service/api'
     export default {
         name: "sc",
       components:{
@@ -62,6 +63,11 @@
         Group,
         XButton
       },
+      data(){
+          return{
+            scList:[]
+          }
+      },
       methods:{
         back(){
           this.$router.go(-1);//返回上一层
@@ -69,6 +75,22 @@
         toDetail(){
           this.$router.push("/courseDetail");
         },
+        deletsc(id){
+          deletSc({id:id}).then(res=>{
+              if(res.code===1){
+                console.log("删除成功");
+                window.location.reload();
+              }else{
+                console.log("删除失败，请稍后再试");
+                return false;
+              }
+          })
+        },
+      },
+      mounted(){
+        mySc().then(res=>{
+          this.scList=res.data
+        })
       }
     }
 </script>

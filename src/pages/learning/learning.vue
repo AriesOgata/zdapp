@@ -121,6 +121,8 @@ export default {
   },
     toStepTwo(){
       loginCheck({username:this.username}).then(res=>{
+        let data=res.data;
+        console.log(res);
         if(res.code == 0){
           this.$vux.toast.show({
             text: '请先登录',
