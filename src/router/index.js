@@ -42,6 +42,8 @@ import myresult from '@/pages/stxx/myresult'
 import stxue from '@/pages/stxx/stxue'
 import certificate from '@/pages/vip/certificate'
 
+import mycourse from '@/pages/stxx/mycourse'
+
 Vue.use(Router)
 
 export default new Router({
@@ -85,6 +87,11 @@ export default new Router({
       path:'/qlearning',
       name:'qlearning',
       component:qlearning
+    },
+    {
+      path:'/mycourse',
+      name:'mycourse',
+      component:mycourse
     },
     {
       path:'/certificate',

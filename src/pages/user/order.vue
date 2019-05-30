@@ -8,45 +8,49 @@
       </x-header>
     </div>
   <tab>
-    <tab-item v-for="(item,index) in types" :key="item.id" :selected="item.id===1" @on-item-click="tab(index)">{{item.title}}</tab-item>
+    <tab-item :key="1" selected @on-item-click="tab(1)">未支付</tab-item>
+    <tab-item :key="2"  @on-item-click="tab(2)">已支付</tab-item>
   </tab>
-    <div class="order_box" v-for="(item,index) in types"  v-show="index==num">
-        <div class="order_list clear">
+  <div class="order_box" v-show="1==num">
+        <div class="order_list clear" v-for="item in weiorder">
             <div class="order_txt clear">
                 <div class="order_txt_left">
                     <p>安培教育</p>
-                    <span>制冷空调安装作业</span>
+                    <span>{{item.title}}</span>
                 </div>
                 <div class="order_txt_price">
                     <span>¥650.0元</span>
                 </div>
             </div>
             <div class="order_btn ">
-                <span class="order_btn_style order_btn_show">{{item.title}}</span>
-                <span class="order_btn_style order_btn_color">删除订单</span>
-            </div>
-        </div>
-        <div class="order_list clear">
-            <div class="order_txt clear">
-                <div class="order_txt_left">
-                    <p>安培教育</p>
-                    <span>电工初级( 复审 )</span>
-                </div>
-                <div class="order_txt_price">
-                    <span>¥350.0元</span>
-                </div>
-            </div>
-            <div class="order_btn ">
-                <span class="order_btn_style order_btn_show">已支付</span>
+                <span class="order_btn_style order_btn_show">未支付</span>
                 <span class="order_btn_style order_btn_color">删除订单</span>
             </div>
         </div>
     </div>
+  <div class="order_box" v-show="2==num">
+    <div class="order_list clear" v-for="items in yiorder">
+      <div class="order_txt clear">
+        <div class="order_txt_left">
+          <p>安培教育</p>
+          <span>{{items.title}}</span>.
+        </div>
+        <div class="order_txt_price">
+          <span>¥650.0元</span>
+        </div>
+      </div>
+      <div class="order_btn ">
+        <span class="order_btn_style order_btn_show">已支付</span>
+        <span class="order_btn_style order_btn_color">删除订单</span>
+      </div>
+    </div>
+  </div>
 </div>
 </template>
 
 <script>
 import { XHeader,Tab,TabItem} from 'vux'
+import {myOrder} from 'src/service/api'
 
 export default {
 //import引入的组件需要注入到对象中才能使用
@@ -61,6 +65,9 @@ return {
       },
   types:[{id:1,title:'未支付'},{id:2,title:'已支付'},],
   num:1,
+  orderList:[],
+  yiorder:[],
+  weiorder:[]
 };
 },
 //监听属性 类似于data概念
@@ -82,7 +89,20 @@ created() {
 },
 //生命周期 - 挂载完成（可以访问DOM元素）
 mounted() {
-
+  myOrder().then(res=>{
+    if (res.code===1) {
+      this.orderList=res.data[0].course
+      console.log(this.orderList);
+      this.orderList.forEach(item=>{
+        if (item.pay_status===0){
+          this.weiorder.push(item)
+        }else{
+          this.yiorder.push(item)
+        }
+      })
+      console.log(this.weiorder);
+    }
+  })
 },
 beforeCreate() {}, //生命周期 - 创建之前
 beforeMount() {}, //生命周期 - 挂载之前

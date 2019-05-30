@@ -229,54 +229,6 @@ URL
 
 
 
->
-
-```javascript
-
-```
-
-------
-
-
-
-### 3.课程列表接口
-
-URL
-
-> http://zdapp.808w.com/app/course/showlist
-
-接口功能
-
-> ```
-> 获取课程列表（携带参数为机构的课程列表）
-> ```
-
-请求参数
-
-> | 参数       | 必选 | 类型 | 说明   |
-> | :--------- | :--- | :--- | ------ |
-> | categoryId | 否   | int  | 分类id |
-> | companyId  | 否   | int  | 机构id |
-
-业务相关数据
-
-> | 数组字段 | 字段类型 | 说明         |
-> | :------- | :------- | :----------- |
-> | id       | int      | 机构课程id   |
-> | title    | string   | 课程名称     |
-> | price    | string   | 机构课程价格 |
-
-> 接口示例
-
-> 地址：http://zdapp.808w.com/app/course/showlist?categoryId=187&companyId=1
-
-```javascript
-
-```
-
-------
-
-
 
 ### 4.工种课程内容接口
 
@@ -310,43 +262,6 @@ URL
 > 接口示例
 
 > 地址：http://zdapp.808w.com/app/course/info?id=1
-
-```javascript
-
-```
-
-------
-
-### 5.课程接口
-
-URL
-
-> http://zdapp.808w.com/app/course/showList
-
-接口功能
-
-> ```
-> 工种分类和子分类
-> ```
-
-请求参数
-
-> | 参数      | 必选 | 类型 | 说明       |
-> | :-------- | :--- | :--- | ---------- |
-> | categoryId | 是   | int  | 机构id     |
-
-业务相关数据
-
-> | 数组字段 | 字段类型 | 说明         |
-> | :------- | :------- | :----------- |
-> | id       | int      | 机构课程id   |
-> | title    | string   | 课程名称     |
-> | price    | string   | 机构课程价格 |
-
-
-> 接口示例
-
-> 地址：http://zdapp.808w.com/app/course/showList?categoryId=187
 
 ```javascript
 
