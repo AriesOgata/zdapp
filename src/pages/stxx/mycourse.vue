@@ -108,6 +108,7 @@
     transform: rotate(315deg);
     top: 5px;
   }
+  .ellipsis{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .test-header{
     width: 100%;
     height: 1.8rem;

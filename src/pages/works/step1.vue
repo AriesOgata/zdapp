@@ -13,7 +13,7 @@
 
       </div>
       <div style="background:#fff;">
-        <div id="choosecity"  @click="chooCity()"> 
+        <div id="choosecity"  @click="chooCity()">
           <div>
             <group><cell title="选择考试城市" :value="LocationCity" is-link style="border-top:none;"></cell></group>
           </div>
@@ -25,33 +25,23 @@
         <p class="ex-choose-city">报名状态</p>
         <div>
              <x-button  mini plain style="border-radius:99px;margin-right:0.4rem;padding-left:0.6rem" v-for="item in wpList" :key="item.name"
-              :class="{active : active == item.name}" 
+              :class="{active : active == item.name}"
               @click.native="selected(item.name)">
             {{item.name}}
           </x-button >
         </div>
       </div>
-      <!--学习阶段 E-->                           
+      <!--学习阶段 E-->
       <!-- 选择工种 S -->
       <div id="ex-gongzhong">
         <p class="ex-choose-city ">选择工种</p>
         <ul class="ex-gongzhong-ul">
           <li v-for="item1 in gzlists" class="ex-gongzhong-li">
-            <div  :class="{exactive : exactive == item1.id}" 
+            <div  :class="{exactive : exactive == item1.id}"
               @click="gzselected(item1.id)" >
               <img :src='item1.icon'>
               <p class="ellipsis">{{item1.name}}</p>
             </div>
-            <!-- <div v-transfer-dom>
-                <popup v-model="show13" position="bottom" max-height="50%">
-                  <group>
-                     <cell v-for="item2 in item1.children"  :title="item2.name" :key="item2.id"></cell>
-                  </group>
-                  <div style="padding: 10px;">
-                    <x-button @click.native="show13 = false" type="primary"> 关闭</x-button>
-                  </div>
-                </popup>
-              </div> -->
           </li>
         </ul>
       </div>
@@ -124,7 +114,7 @@ import cityPicker from 'src/components/cityPicker'
     methods:{
       selected:function(name){//有证无证
         console.log(name);
-        this.active = name; 
+        this.active = name;
       },
       gzselected:function(name){//工种选择
           this.exactive = name;
@@ -198,7 +188,7 @@ import cityPicker from 'src/components/cityPicker'
 			});
 			let LocationCity = getStore("LocationCity");
 			if(!LocationCity){
-				this.getLocation(); 
+				this.getLocation();
 			}else{
 				this.LocationCity = LocationCity;
 			}
@@ -228,10 +218,10 @@ import cityPicker from 'src/components/cityPicker'
   display: block;
   margin: 0 auto;
 }
-  #ex-step1>div:nth-of-type(1){ display: flex; 
-      display: -webkit-flex;  
+  #ex-step1>div:nth-of-type(1){ display: flex;
+      display: -webkit-flex;
       /* vh 相对于可视区域的高度 */
-      min-height: 100vh;  
+      min-height: 100vh;
       /* 设置主轴方向 */
       flex-direction: column;   }
   .ex-next{
@@ -256,7 +246,7 @@ import cityPicker from 'src/components/cityPicker'
   .ex-choose-city{font-weight:bold;font-size:0.67rem;color:#505050;}
   #ex-gongzhong{padding:0.4rem;padding-top:0.8rem;background:#FFF;}
   .exactive{border:2px solid #5ebf83 !important;}
-  .ex-gongzhong-li{margin-top:0.8rem;width:23%;margin-right:2%;overflow:hidden;display: inline-block}
+  .ex-gongzhong-li{margin-top:0.8rem;width:23%;margin-right:2%;overflow:hidden;display: inline-block;height: 4.4rem}
   .ex-gongzhong-li:nth-of-type(4n){margin-right:0;}
   .ex-gongzhong-li>div{display: block;border:2px solid #FFF;padding-top:0.2rem;}
   .ex-gongzhong-li>div>img{width:1.5rem;height:1.5rem;display: block;margin:0 auto;}
@@ -264,8 +254,9 @@ import cityPicker from 'src/components/cityPicker'
   .emptyitem{
     width:0;
     visibility: hidden;
-    
+
   }
+
   .active{
     border:1px solid #5ebf83 !important;
     background: #5ebf83 !important;
@@ -283,5 +274,5 @@ import cityPicker from 'src/components/cityPicker'
   .city-hid{
     display: none;
   }
-  
+
 </style>
