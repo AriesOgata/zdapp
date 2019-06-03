@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/pages/home/home'
+import baoming from '@/pages/works/baoming'
 import courseList from '@/pages/course/courseList'
 import courseDetail from '@/pages/course/courseDetail'
 import organ from '@/pages/organ/organ'
 import organDetail from '@/pages/organ/child/details'
 import bdmap from '@/pages/organ/child/bdmap'
+import step1 from '@/pages/works/step1'
 import step2 from '@/pages/works/step2'
 import step3 from '@/pages/works/step3'
 import search from '@/pages/works/search'
@@ -34,7 +36,7 @@ import mapTest from '@/components/cityTest'
 
 import vip from '@/pages/vip/vip'
 import qlearning from '@/pages/exam/qlearning'
-import step1 from '@/pages/works/step1'
+
 import teacherAll from '@/pages/teacher/teacherAll'
 import sc from '@/pages/stxx/sc'
 import ct from '@/pages/stxx/ct'
@@ -43,6 +45,7 @@ import stxue from '@/pages/stxx/stxue'
 import certificate from '@/pages/vip/certificate'
 
 import mycourse from '@/pages/stxx/mycourse'
+
 
 Vue.use(Router)
 
@@ -239,5 +242,10 @@ export default new Router({
       name:'findDetails',
       component: findDetails,
     },
+    {
+      path:'/baoming',
+      name:'baoming',
+      component:baoming
+    }
   ]
 })

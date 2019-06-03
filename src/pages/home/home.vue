@@ -39,9 +39,9 @@
             <img src="../../images/icon4.png" alt="">
             <p>试题学习</p>
          </router-link>
-         <router-link to="/organ" class="module_block_a">
+         <router-link to="/baoming" class="module_block_a">
             <img src="../../images/icon5.png" alt="">
-            <p>机构介绍</p>
+            <p>报名状态</p>
          </router-link>
          <router-link to="/personFile" class="module_block_a">
             <img src="../../images/icon6.png" alt="">
