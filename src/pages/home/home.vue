@@ -39,7 +39,7 @@
             <img src="../../images/icon4.png" alt="">
             <p>试题学习</p>
          </router-link>
-         <router-link :to="{ path: '/organDetail', query: {companyId:2569}}" class="module_block_a">
+         <router-link to="/organ" class="module_block_a">
             <img src="../../images/icon5.png" alt="">
             <p>机构介绍</p>
          </router-link>
@@ -69,7 +69,7 @@
             <p>报名</p>
            <img src="../../images/bao1.png" alt="">
         </router-link>
-        <router-link :to="{ path: '/organDetail', query: {companyId:2569}}" class="hot_module_a">
+        <router-link to="/organ" class="hot_module_a">
             <p>机构介绍</p>
            <img src="../../images/bao2.png" alt="">
         </router-link>

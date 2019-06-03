@@ -40,7 +40,7 @@
       </div>
       <div class="origan_box" style="margin-bottom:3rem" v-else>
         <div class="origan_list" v-for="items in jgdata">
-          <router-link :to="{ path: '/organDetail', query: {companyId:items.id}}"> 
+          <router-link :to="{ path: '/organDetail', query: {companyId:items.id}}">
             <flexbox>
               <flexbox-item :span="4"><div class="origan_list_imgBox">
                 <img src="../../images/banner.png" alt="" class="origan_img">
@@ -53,19 +53,19 @@
                       <flexbox-item :span="3"><img src="../../images/course_icon.png" alt="" class="origan_txt_title_img"></flexbox-item>
                     </flexbox>
                     <p class="origan_evaluation">
-                     <rater v-model="data" :font-size="15" disabled></rater> 
+                     <rater v-model="data" :font-size="15" disabled></rater>
                         {{items.count_comment}}条
                       </p>
-                    <div class="origan_class">
-                      <flexbox>
-                        <flexbox-item :span="9"><div class="origan_buy">{{items.min_price==null?'暂无价格':'￥'+items.min_price}}</div></flexbox-item>
-                       <!--  <flexbox-item><div class="origan_curse ellipsis"><span>电工</span><span>焊工</span></div></flexbox-item> -->
-                        <flexbox-item :span="3"><div class="origan_km">{{GetDistance(items.latitude,items.longitude)}}km</div></flexbox-item>
-                      </flexbox>
-                    </div>
+                    <!--<div class="origan_class">-->
+                      <!--<flexbox>-->
+                        <!--<flexbox-item :span="9"><div class="origan_buy">{{items.min_price==null?'暂无价格':'￥'+items.min_price}}</div></flexbox-item>-->
+                       <!--&lt;!&ndash;  <flexbox-item><div class="origan_curse ellipsis"><span>电工</span><span>焊工</span></div></flexbox-item> &ndash;&gt;-->
+                        <!--<flexbox-item :span="3"><div class="origan_km">{{GetDistance(items.latitude,items.longitude)}}km</div></flexbox-item>-->
+                      <!--</flexbox>-->
+                    <!--</div>-->
                   </div>
               </flexbox-item>
-            </flexbox> 
+            </flexbox>
         </router-link>
         </div>
       </div>
@@ -135,7 +135,7 @@ export default {
     empty,
 		Tab,
 		TabItem,
-    Flexbox, 
+    Flexbox,
     FlexboxItem,
     Rater,
     footNav,
@@ -156,7 +156,7 @@ export default {
         keyword:'',
     }
   },
-  mounted(){ 
+  mounted(){
      // 事件监听滚动条
     window.addEventListener('scroll', this.watchScroll);
     this.updates('default');
@@ -360,7 +360,7 @@ export default {
   vertical-align: middle;
 }
 .origan_txt_title{
-  font-size: 0.7rem;
+  font-size: 0.6rem;
     color: #333;
 }
 .origan_txt_title_img{

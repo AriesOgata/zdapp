@@ -14,29 +14,25 @@
 
       <div class="course_list" v-for="(item,index) in newslist" v-show="index==num">
         <ul>
-          <li class="course_li" v-for="row in item.children">
+          <router-link class="course_li" v-for="row in item.children" tag="li" :to="{ path: '/courseDetail', query: {id:row.id}}">
             <section >
-              <img src="../../images/banner.png" alt="" class="course_img">
+              <img :src="imgurl+row.small_picture" alt="" class="course_img">
             </section>
             <div class="course_txt">
               <p class="course_txt_title">
                 <span class="ellipsis">{{row.title}}</span>
                 <i></i>
               </p>
-              <p class="course_price">￥850</p>
               <div class="course_class">
                 <span>{{item.name}}</span>
               </div>
               <div class="course_box_btn">
                 <router-link :to="{ path: '/courseDetail', query: {id:row.id}}"   class="course_btn">
-                  试听
-                </router-link>
-                <router-link :to="{ path: '/courseDetail', query: {id:row.id}}"   class="course_btn">
                   购买
                 </router-link>
               </div>
             </div>
-          </li>
+          </router-link>
         </ul>
       </div>
 
@@ -67,7 +63,8 @@ export default {
         borderColor: '#333'
       },
       id:[],
-      ids:[1,2,3,191,197,199]
+      ids:[1,2,3,191,197,199],
+      imgurl:'http://zdapp.808w.com'
 		}
 	},
 	methods:{

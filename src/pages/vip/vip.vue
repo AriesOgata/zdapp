@@ -74,7 +74,7 @@
         <div class="cen01">
           <img src="../../images/01/7.png" alt="">
           <div>
-            <p>驾考无忧，安心保障服务</p>
+            <p>考试无忧，安心保障服务</p>
             <p>考试不过，赔付100元</p>
           </div>
         </div>

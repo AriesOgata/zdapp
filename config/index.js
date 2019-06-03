@@ -8,7 +8,7 @@ module.exports = {
   dev: {
     env: require('./dev.env'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
     proxyTable: {},
 
     // Various Dev Server settings

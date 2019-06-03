@@ -20,10 +20,11 @@
       </section>
 
     </div>
-	<video width="335" height="200" controls id="video-play" class="video-play">
-		<source src="http://dyx.anpeiw.com/ejfg08%E4%BA%8C%E5%BB%BA%E6%B3%95%E8%A7%843-3%20%E6%97%A0.mp4" type="video/mp4">
+	<video width="335" height="200" controls id="video-play" class="video-play" ref="video">
+		<source type="video/mp4">
 		您的浏览器不支持Video标签。
 	</video>
+
 	<div class="video-column">
 
 		<div class="dianz"><img src="../../images/couer_icon2.png" class="dianz-img"><span>1234</span></div>
@@ -41,73 +42,15 @@
   	<div class="tab-container">
   		<div v-if="showIndex == 0">
   			<ul class="lesson-list">
-				<li class="lesson-li">第一节 制冷与空调安装01</li>
-				<li class="lesson-li">第一节 制冷与空调安装01</li>
-				<li class="lesson-li">第一节 制冷与空调安装01</li>
-				<li class="lesson-li">第一节 制冷与空调安装01</li>
-				<li class="lesson-li">第一节 制冷与空调安装01</li>
-				<li class="lesson-li">第一节 制冷与空调安装01</li>
-				<li class="lesson-li">第一节 制冷与空调安装01</li>
-				<li class="lesson-li">第一节 制冷与空调安装01</li>
-				<li class="lesson-li">第一节 制冷与空调安装01</li>
-				<li class="lesson-li">第一节 制冷与空调安装01</li>
-				<li class="lesson-li">第一节 制冷与空调安装0332</li>
+				<li class="lesson-li">第一节 {{infokList.title}}</li>
 			</ul>
   		</div>
   		<div v-else-if="showIndex == 1" class="course-intro">
 			制冷与空调设备安装维修作业--陈老师
-
   		</div>
   		<div v-else class="course-list">
-			<p class="course-like">观看该课程的人还喜欢</p>
-          	<ul>
-	            <li class="course_li">
-	              <section >
-	                <img src="../../images/banner.png" alt="" class="course_img">
-	              </section>
-	              <div class="course_txt">
-	                <p class="course_txt_title">
-	                  <span class="ellipsis">制冷与空调安装维修</span>
-	                  <i></i>
-	                </p>
-	                <p class="course_price">￥850</p>
-	                <div class="course_class">
-	                  <span>制冷空调(初训)</span>
-	                </div>
-	                <div class="course_box_btn">
-	                  <router-link :to="{path: '/', query: {}}"  class="course_btn">
-	                    试听
-	                  </router-link>
-	                  <router-link :to="{path: '/', query: {}}"  class="course_btn">
-	                    购买
-	                  </router-link>
-	                </div>
-	              </div>
-	            </li>
-	            <li class="course_li">
-	              <section >
-	                <img src="../../images/banner.png" alt="" class="course_img">
-	              </section>
-	              <div class="course_txt">
-	                <p class="course_txt_title">
-	                  <span class="ellipsis">制冷与空调安装维修</span>
-	                  <i></i>
-	                </p>
-	                <p class="course_price">￥850</p>
-	                <div class="course_class">
-	                  <span>制冷空调(初训)</span>
-	                </div>
-	                <div class="course_box_btn">
-	                  <router-link :to="{path: '/', query: {}}"  class="course_btn">
-	                    试听
-	                  </router-link>
-	                  <router-link :to="{path: '/', query: {}}"  class="course_btn">
-	                    购买
-	                  </router-link>
-	                </div>
-	              </div>
-	            </li>
-          	</ul>
+
+
   		</div>
   	</div>
 </div>
@@ -135,13 +78,16 @@ export default {
 			borderColor: {
 	        	borderColor: '#333'
 	      },
-      infoList:[]
+      infoList:[],
+      infokList:[]
 		}
 	},
   mounted(){
     Info({id:this.$route.query.id}).then(res=>{
       this.infoList=res.data.course
-      console.log(this.infoList);
+      this.infokList=res.data.courseLesson[0]
+      this.$refs.video.src = res.data.courseLesson[0].media_uri
+      console.log(this.infoList,this.infokList);
     })
   },
 	methods:{

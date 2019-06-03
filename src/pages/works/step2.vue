@@ -18,7 +18,7 @@
 		        <!--一级分类-->
 		        	<p class="gz-close"> <x-icon type="ios-close-outline" size="25" style="color:#CCC" @click="show13 = false"></x-icon></p>
 			         <div>
-			         	<p class="ex-titp" style="margin-top:0">生产安全</p>
+			         	<p class="ex-titp" style="margin-top:0">类别</p>
 			         	<ul class="gzfl">
 			         		<li  v-for="item1 in enroll" :class="[active1 == item1.name?'active':'']" :key="item1.name" @click="gzs(item1.category_id,item1.name)">{{item1.name}}</li>
 			         	</ul>
@@ -26,7 +26,7 @@
 			     <!--一级分类-->
 			     <!--二级分类-->
 			         <div v-if="gz">
-			         	<p class="ex-titp">工种</p>
+			         	<p class="ex-titp">工种或等级</p>
 						 <p class="data-none" v-show="enrollTwoHid">暂无数据</p>
 			         	<ul class="gzfl">
 			         		<li :class="[active2 == item2.name?'active':'']" :key="item2.name" v-for="item2 in enrollTwo"
