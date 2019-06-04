@@ -65,6 +65,7 @@ import {showlist} from 'src/service/api'
 import {ChinaAddressV4Data,XAddress,TransferDom, Popup, Group, Cell, XButton, XSwitch,Value2nameFilter as value2name } from 'vux'
 import { getStore, setStore } from 'src/config/mUtils'
 import cityPicker from 'src/components/cityPicker'
+
   export default{
      directives: {
         TransferDom

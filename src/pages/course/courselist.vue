@@ -170,7 +170,7 @@ export default {
 		width: 3rem;
     height: 1rem;
 		background: url(../../images/course_icon.png) no-repeat;
-		background-size: 100% 100%;
+		background-size: 100% 80%;
     position: absolute;
     right: 0;
     top: 0;

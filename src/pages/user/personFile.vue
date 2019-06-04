@@ -11,7 +11,7 @@
           <img src="../../images/user_img.png" alt="">
           <span>立即登录</span>
         </router-link>
-       
+
       </div>
     </div>
     <div class="person_box person_icon_box">
@@ -45,7 +45,7 @@
             <div class="person_list_img">
               <img src="../../images/person_icon4.png" alt="">
             </div>
-            <span>我的动态</span>
+            <span>我的版本</span>
           </div>
         </flexbox-item>
       </flexbox>
@@ -68,7 +68,7 @@
     </div>
     <div class="person_box" style="margin-top: -.5rem;">
       <group>
-        <cell title="我的设置" is-link style="font-size: .6rem;">
+        <cell title="我的设置" style="font-size: .6rem;" >
           <img slot="icon" width="16" style="display:block;margin-right:10px;" src="../../images/person_icon55.png">
         </cell>
       </group>
@@ -97,34 +97,112 @@ export default {
     Cell,
     footNav
   },
-  methods:{
-    empty(name){
+  methods: {
+    empty(name) {
       console.log(111)
-       this.$router.push({path:'/empty',query:{name:name}})
+      this.$router.push({path: '/empty', query: {name: name}})
     },
-    gotoAddress(path){
+    gotoAddress(path) {
       this.$router.push(path)
     },
-     //退出登录
+    //退出登录
     loginout() {
-      logout({}).then(res=>{
+      logout({}).then(res => {
         removeStore("user");
         this.$vux.toast.show({
-                text: '退出成功',
-                type:'text',
-                position: 'middle'
+          text: '退出成功',
+          type: 'text',
+          position: 'middle'
         }),
-        setTimeout(() => {
-          this.$router.push("/home");
-        }, 1000);
+          setTimeout(() => {
+            this.$router.push("/home");
+          }, 1000);
       });
     },
-    login(){
-      loginCheck({}).then(res=>{
-          console.log(res)
-          return
-        })
-    }
+    login() {
+      loginCheck({}).then(res => {
+        console.log(res)
+        return
+      })
+    },
+    // UPpackage () {
+    //   // 获取当前应用的版本号
+    //   var wgtVer = null;
+    //   function plusReady () {
+    //     // ......
+    //     // 获取本地应用资源版本号
+    //     plus.runtime.getProperty(plus.runtime.appid, function (inf) {
+    //       wgtVer = inf.version;
+    //       alert('当前应用版本：' + wgtVer);
+    //     });
+    //   }
+    //   if (window.plus) {
+    //     plusReady();
+    //   } else {
+    //     document.addEventListener('plusready', plusReady, false);
+    //   };
+    //   // 发起ajax检测是否有新版本
+    //   var checkUrl = 'http://zdapp.808w.com/app/version/version/username/admin';
+    //   function checkUpdate () {
+    //     alert('检测更新');
+    //     plus.nativeUI.showWaiting('检测更新...');
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.onreadystatechange = function () {
+    //       switch (xhr.readyState) {
+    //         case 4:
+    //           plus.nativeUI.closeWaiting();
+    //           if (xhr.status === 200) {
+    //             alert('检测更新成功：'+ xhr.responseText);
+    //             var newVer = xhr.responseText;
+    //             if (wgtVer && newVer && (wgtVer !== newVer)) {
+    //               downWgt();  // 下载升级包
+    //             } else {
+    //               plus.nativeUI.alert('无新版本可更新！');
+    //             }
+    //           } else {
+    //             alert('检测更新失败！');
+    //             plus.nativeUI.alert('检测更新失败！');
+    //           }
+    //           break;
+    //         default:
+    //           break;
+    //       }
+    //     };
+    //     xhr.open('GET', checkUrl);
+    //     xhr.send();
+    //   }
+    //   checkUpdate();
+    //   // 下载wgt文件
+    //   var wgtUrl = 'http://zdapp.808w.com/upload/version/H500784D1.wgt';
+    //   function downWgt () {
+    //     plus.nativeUI.showWaiting('下载wgt文件...');
+    //     plus.downloader.createDownload(wgtUrl, {filename: '_doc/update/'}, function (d, status) {
+    //       if (status === 200) {
+    //         alert('下载wgt成功：' + d.filename);
+    //         installWgt(d.filename); // 安装wgt包
+    //       } else {
+    //         alert('下载wgt失败！');
+    //         plus.nativeUI.alert('下载wgt失败！');
+    //       }
+    //       plus.nativeUI.closeWaiting();
+    //     }).start();
+    //   };
+    //   // 更新应用资源
+    //   function installWgt (path) {
+    //     plus.nativeUI.showWaiting('安装wgt文件...');
+    //     plus.runtime.install(path, {}, function () {
+    //       plus.nativeUI.closeWaiting();
+    //       alert('安装wgt文件成功！');
+    //       plus.nativeUI.alert('应用资源更新完成！', function () {
+    //         plus.runtime.restart();
+    //       });
+    //     }, function (e) {
+    //       plus.nativeUI.closeWaiting();
+    //       console.log("安装wgt文件失败["+e.code+"]："+e.message);
+    //       plus.nativeUI.alert("安装wgt文件失败["+e.code+"]："+e.message);
+    //     });
+    //   }
+    // }
   },
   mounted() {
     this.username  = getStore("user");

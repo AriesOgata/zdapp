@@ -3,7 +3,7 @@
     "id" : "H500784D1", /*应用的标识*/
     "name" : "众盾安全", /*应用名称，程序桌面图标名称*/
     "version" : {
-        "name" : "1.0", /*应用版本名称*/
+        "name" : "2.0", /*应用版本名称*/
         "code" : 2
     },
     "description" : "学习", /*应用描述信息*/
@@ -82,9 +82,6 @@
         },
         "Barcode" : {
             "description" : "管理二维码扫描插件"
-        },
-        "Maps" : {
-            "description" : "管理地图插件"
         },
         "Speech" : {
             "description" : "管理语音识别插件"
