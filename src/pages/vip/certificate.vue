@@ -18,8 +18,10 @@
               <option value="item-5">危险化学品安全作业</option>
               <option value="item-6">危险化学品经营</option>
               <option value="item-7">危险化学品生产</option>
-              <option value="item-8">一般企业</option>
+              <option value="item-8">一般企业管理员</option>
               <option value="item-9">制冷与空调作业</option>
+              <option value="item-10">注册安全评价师</option>
+              <option value="item-11">安全评价师</option>
             </select>
             <input type="text" class="inp" placeholder="请输入证件编号">
             <p>立即查询</p>

@@ -104,12 +104,12 @@ import cityPicker from 'src/components/cityPicker'
 				cityPicker
       },
     created(){
-      var isopened =getStore("isopened");
-      if(isopened){
-        this.$router.replace({path:'/home'});
-      }else{
-          setStore("isopened",true);
-      }
+      // var isopened =getStore("isopened");
+      // if(isopened){
+      //   this.$router.replace({path:'/home'});
+      // }else{
+      //     setStore("isopened",true);
+      // }
     },
     methods:{
       selected:function(name){//有证无证

@@ -4,7 +4,7 @@
     <div id="bmhead">
       <x-header :left-options="{backText: ''}"><b>申请入驻</b></x-header>
     </div>
-    <!--基本信息 S--> 
+    <!--基本信息 S-->
     <div id="ex-sub">
       <p class="jgtit">基本信息</p>
 
@@ -18,7 +18,7 @@
       </group>
       <group>
        <div class="reda">*</div>
-        <x-input title="营业执照号码" name="username" placeholder="请输入营业执照号码" is-type="china-name"></x-input>
+        <x-input title="营业执照" name="username" placeholder="请输入营业执照号码" is-type="china-name"></x-input>
       </group>
       <group>
       <div class="reda">*</div>
@@ -30,7 +30,7 @@
       <p class="jgtit" style="margin-top:0.32rem;">证件上传</p>
       <div class="zjsc">
         <span>营业执照副本</span>
-        <div> 
+        <div>
           <div></div>
            <a href="##">点击上传</a>
         </div>
@@ -44,7 +44,7 @@
       <p class="warminfo"><span class="red">*</span>上传图片注意清晰，不超过2M</p>
     </div>
   </div>
-    <!--基本信息 E-->    
+    <!--基本信息 E-->
   <div class="ex-next" @click="toInfo()">
    下一步
   </div>
@@ -86,9 +86,9 @@ background: #FFF;
 }
 #ex-sub{margin-top:0.5rem;}
 /deep/#ex-sub .weui-cells{margin-top:0 !important;overflow:hidden;}
-#ex-sub input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{ 
-color:#CCC; 
-font-size:0.6rem; 
+#ex-sub input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{
+color:#CCC;
+font-size:0.6rem;
 }
 /deep/ #ex-sub  .weui-cells:after{border-bottom:none;}
 #ex-sub .vux-x-input{padding-top:0.6rem;padding-bottom:0.4rem;font-size:0.64rem;padding-left:0.6rem;}
