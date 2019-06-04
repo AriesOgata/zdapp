@@ -69,7 +69,7 @@
       <li>
         <div>
           <div><p>7</p></div>
-          一般企业
+          一般企业管理员
         </div>
         <p>31</p>
       </li>
@@ -79,6 +79,20 @@
           制冷与空调作业
         </div>
         <p>145</p>
+      </li>
+      <li>
+        <div>
+          <div><p>9</p></div>
+          注册安全评价师
+        </div>
+        <p>120</p>
+      </li>
+      <li>
+        <div>
+          <div><p>10</p></div>
+          安全评价师
+        </div>
+        <p>45</p>
       </li>
     </ul>
     <foot-nav></foot-nav>

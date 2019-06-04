@@ -100,7 +100,7 @@ export default {
   transform: rotate(315deg);
   top: 5px;
 }
-  .ellipsis{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ellipsis{overflow:hidden;text-overflow:ellipsis;}
   .test-header{
     width: 100%;
     height: 1.8rem;
@@ -163,18 +163,23 @@ export default {
 		justify-content: space-between;
 		font-size: .5rem;
 		color: #333;
+    position: relative;
 	}
 	.course_txt_title i{
 		float:right;
 		width: 3rem;
+    height: 1rem;
 		background: url(../../images/course_icon.png) no-repeat;
 		background-size: 100% 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
 	}
 	.course_txt_title span{
 		font-size: .6rem;
 		font-weight: bold;
 		display: block;
-		width: 70%;
+		width: 69%;
 		text-align: left;
 	}
 	.course_price{
@@ -189,7 +194,7 @@ export default {
 	.course_box_btn{
 		position: absolute;
 		right: 0;
-		bottom: 1.1rem;
+		bottom: 0.1rem;
 	}
 	.course_btn{
 		font-size: .5rem;
