@@ -43,7 +43,7 @@
           <router-link :to="{ path: '/organDetail', query: {companyId:items.id}}">
             <flexbox>
               <flexbox-item :span="4"><div class="origan_list_imgBox">
-                <img src="../../images/banner.png" alt="" class="origan_img">
+                <img :src="imgurl+items.license_photo" alt="" class="origan_img">
               </div>
               </flexbox-item>
               <flexbox-item>
@@ -154,6 +154,7 @@ export default {
         empty:false,
         navBarFixed:false,
         keyword:'',
+      imgurl:'http://zdapp.808w.com'
     }
   },
   mounted(){

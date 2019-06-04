@@ -9,7 +9,7 @@
     </div>
     <div class="details_box">
       <div class="details_banner">
-        <img src="../../../images/banner.png" alt="">
+        <img :src="imgurl+organ.license_photo" alt="">
       </div>
       <div class="details_title_box">
         <p class="details_title">
@@ -155,7 +155,8 @@ export default {
       borderColor: {
         borderColor: '#333'
       },
-      isShare:false
+      isShare:false,
+      imgurl:'http://zdapp.808w.com'
     }
   },
   methods:{
