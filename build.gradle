@@ -13,6 +13,8 @@ buildscript {
     dependencies {
         classpath 'com.eriwen:gradle-js-plugin:1.8.0'
 		classpath 'com.moowork.gradle:gradle-grunt-plugin:0.2'
+		 compile 'com.dou361.update:jjdxm-update:1.0.5'
+        compile 'com.dou361.download:jjdxm-download:1.0.3'
     }
 }
 

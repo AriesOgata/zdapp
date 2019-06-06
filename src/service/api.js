@@ -29,6 +29,19 @@ axios.interceptors.response.use((res) =>{
     return Promise.reject(error);
 });
 
+//从服务器获取应用的版本信息，和本地应用版本对比
+export function getAppInfo(appName,appType) {
+  return fetch({
+    headers: {"Content-Type": "application/json"},
+    url: '/mobile/common/getAppInfo',
+    method: 'post',
+    data: {
+      appName: appName,
+      appType: appType
+    }
+  })
+}
+
 export function fetch(type='GET',url, params) {
     return new Promise((resolve, reject) => {
       type = type.toUpperCase();
