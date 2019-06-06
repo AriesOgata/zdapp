@@ -42,9 +42,13 @@ import sc from '@/pages/stxx/sc'
 import ct from '@/pages/stxx/ct'
 import myresult from '@/pages/stxx/myresult'
 import stxue from '@/pages/stxx/stxue'
+
 import certificate from '@/pages/vip/certificate'
 
 import mycourse from '@/pages/stxx/mycourse'
+
+import basics from '@/pages/stxx/basics'
+
 
 
 Vue.use(Router)
@@ -246,6 +250,11 @@ export default new Router({
       path:'/baoming',
       name:'baoming',
       component:baoming
+    },
+    {
+      path:'/basics',
+      name:'basics',
+      component:basics
     }
   ]
 })

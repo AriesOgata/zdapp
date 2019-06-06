@@ -9,7 +9,7 @@
 
   <div class="cen1">
     <grid cols="2">
-      <grid-item v-for="item in examList" :label="item.basic" link="">
+      <grid-item v-for="item in examList" :label="item.basic" :link="{ path: '/basics' , query: {basicid:item.basicid}}">
         <img class="cen1-i" slot="icon" :src="imgurl+item.basicthumb">
       </grid-item>
     </grid>

@@ -125,6 +125,8 @@ export const deletSc = (params) => fetch('POST','/app/my_course/course_del__favo
 export const myOrder = (params) => fetch('POST','/app/order/index/username/admin',params);
 //我的考场
 export const myexam = (params) => fetch('GET','/exam/index/index',params);
+//学习考试接口
+export const basics = (params) => fetch('GET','/exam/exam_paper/index/basicid/',params);
 
 
 
