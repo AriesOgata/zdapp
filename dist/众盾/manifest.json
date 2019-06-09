@@ -214,9 +214,9 @@
                 "android" : {
                     "mdpi" : "", /*普通屏启动图片，分辨率：240x282*/
                     "ldpi" : "", /*大屏启动图片，分辨率：320x442*/
-                    "hdpi" : "C:/Users/Administrator/Desktop/微信图片_20190605104553.png", /*高分屏启动图片，分辨率：480x762*/
-                    "xhdpi" : "C:/Users/Administrator/Desktop/微信图片_20190605104553.png", /*720P高分屏启动图片，分辨率：720x1242*/
-                    "xxhdpi" : "C:/Users/Administrator/Desktop/微信图片_20190605104553.png" /*1080P高分屏启动图片，分辨率：1080x1882*/
+                    "hdpi" : "C:/Users/Administrator/Desktop/启动页1.png", /*高分屏启动图片，分辨率：480x762*/
+                    "xhdpi" : "C:/Users/Administrator/Desktop/启动页1.png", /*720P高分屏启动图片，分辨率：720x1242*/
+                    "xxhdpi" : "C:/Users/Administrator/Desktop/启动页1.png" /*1080P高分屏启动图片，分辨率：1080x1882*/
                 }
             },
             "plugins" : {
