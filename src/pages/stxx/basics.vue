@@ -24,7 +24,7 @@
         },
       },
       mounted(){
-        basics({basics:this.$route.query.basics}).then(res=>{
+        basics().then(res=>{
             this.basicsList=res.data
           console.log(this.basicsList);
         })
