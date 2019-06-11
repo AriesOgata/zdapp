@@ -126,7 +126,7 @@ export const myOrder = (params) => fetch('POST','/app/order/index/username/admin
 //我的考场
 export const myexam = (params) => fetch('GET','/exam/index/index/username/admin',params);
 //学习考试接口
-export const basics = (params) => fetch('GET','/exam/index/basicurl/username/admin',params);
+export const basics = (params) => fetch('GET','/exam/exam_paper/index',params);
 
 
 

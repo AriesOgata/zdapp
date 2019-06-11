@@ -1,7 +1,7 @@
-# **众盾APP后端接口文档** 
+# **众盾APP后端接口文档**
 
 #### 域名
-> http://zdapp.808w.com 
+> http://zdapp.808w.com
 
 #### 返回数据格式
 
@@ -1029,7 +1029,7 @@ URL
 
 > 接口示例
 
-> 地址：http://zdapp.808w.com/exam/exam_paper/index/basicid/1
+> 地址：http://zdapp.808w.com/exam/exam_paper/index?basicid=1
 
 ```javascript
 

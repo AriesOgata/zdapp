@@ -6,17 +6,34 @@
           学习考试
         </div>
       </div>
+      <div class="cen1">
+        <grid cols="3">
+          <grid-item label="真题演练" :link="{ path: '/basics'}">
+            <img class="cen1-i" slot="icon" src="../../images/t4.png">
+          </grid-item>
+          <grid-item label="模拟考试" :link="{ path: '/basics'}">
+            <img class="cen1-i" slot="icon" src="../../images/t2.png">
+          </grid-item>
+          <grid-item label="综合考试" :link="{ path: '/basics'}">
+            <img class="cen1-i" slot="icon" src="../../images/t3.png">
+          </grid-item>
+        </grid>
+      </div>
     </div>
 </template>
 
 <script>
   import {basics} from 'src/service/api'
+  import {Grid,GridItem} from 'vux'
     export default {
         name: "basics",
       data(){
         return{
           basicsList:[]
         }
+      },
+      components:{
+        Grid,GridItem
       },
       methods: {
         back() {
