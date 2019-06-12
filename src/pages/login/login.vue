@@ -51,6 +51,7 @@
       }
     },
     methods:{
+
       back(){
             this.$router.go(-1);//返回上一层
       },
@@ -63,6 +64,7 @@
       },
        //登录
       login(formName) {
+        let _this=this;
         //保存的账号
         let name=this.ruleForm.username;
         //保存的密码
@@ -92,7 +94,7 @@
               position: 'middle'
             })
             setStore("user",name)
-            setStore("eletoken",res.data.token)
+            setStore("Authorization",res.data.token)
             setTimeout(()=>{
               this.$router.push("/personFile");
             },1000)

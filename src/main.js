@@ -21,8 +21,14 @@ Vue.config.productionTip = false
 const FastClick = require('fastclick')
 FastClick.attach(document.body)
 
-const axios = require('axios')
-Vue.prototype.$ajax = axios;
+// const axios = require('axios')
+// Vue.prototype.$ajax = axios;
+
+import axios from 'axios'
+Vue.prototype.$axios=axios
+
+axios.defaults.baseURL = '/api'  //关键代码
+Vue.config.productionTip = false
 
 //axios.defaults.withCredentials=true;
 
