@@ -170,36 +170,36 @@ export default {
       let name = this.organ.name;
       let id = this.organ.id;
       console.log(this.username);
-      // loginCheck({username:this.username}).then(res=>{
-      //   let data=res.data;
-      //     console.log(res);
-      //     if(res.code == 0){
-      //       this.$vux.toast.show({
-      //         text: '请先登录',
-      //         type:'text',
-      //         position: 'middle'
-      //       })
-      //       setTimeout(()=>{
-      //         this.$router.push({path:'/login'});
-      //       },2000)
-      //     }else if(res.code == 1){
-      //       this.$router.push({path:'/step2',query:{name:name,id:id}});
-      //     }
-      //   this.$router.push({path:'/step2',query:{name:name,id:id}});
-      // });
+      loginCheck({username:this.username}).then(res=>{
+        let data=res.data;
+          console.log(res);
+          if(res.code == 0){
+            this.$vux.toast.show({
+              text: '请先登录',
+              type:'text',
+              position: 'middle'
+            })
+            setTimeout(()=>{
+              this.$router.push({path:'/login'});
+            },2000)
+          }else if(res.code == 1){
+            this.$router.push({path:'/step2',query:{name:name,id:id}});
+          }
 
-        if(this.username==null){
-          this.$vux.toast.show({
-            text: '请先登录',
-            type:'text',
-            position: 'middle'
-          })
-          setTimeout(()=>{
-            this.$router.push({path:'/login'});
-          },2000)
-        }else{
-          this.$router.push({path:'/step2',query:{name:name,id:id}});
-        }
+      });
+
+        // if(this.username==null){
+        //   this.$vux.toast.show({
+        //     text: '请先登录',
+        //     type:'text',
+        //     position: 'middle'
+        //   })
+        //   setTimeout(()=>{
+        //     this.$router.push({path:'/login'});
+        //   },2000)
+        // }else{
+        //   this.$router.push({path:'/step2',query:{name:name,id:id}});
+        // }
     },
     toBdmap(){
       this.$router.push({path:'/bdmap',query:{longitude:this.organ.longitude,latitude:this.organ.latitude}});

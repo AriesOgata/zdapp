@@ -157,6 +157,7 @@ import {
 	    XTable,
 	 	TransferDomDirective as TransferDom
 } from 'vux'
+import {JSEncrypt} from 'jsencrypt'
 export default {
   directives: {
     TransferDom
@@ -207,7 +208,13 @@ export default {
 		sex:'',
 		yzmShow:true,
 		countdown:'',
-		agreeShow:true
+		agreeShow:true,
+      miyao:'-----BEGIN PUBLIC KEY-----\n' +
+      'MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgHFQb20CrbnMia3QSLrMg2pWAMyb\n' +
+      '3LiIRCrh4OH3RtvLMITNsQIaNOcxHxzZngyvTjSmksSlqTsEwcJHmMKKYeCK+5BH\n' +
+      'XimfmW+w78fIJexdSgYX7hrXbe38JiGuq1RrhP11UI/xRDjKmZu8LeBtH/HZYQHw\n' +
+      'rNg+l+jF+YebON3jAgMBAAE=\n' +
+      '-----END PUBLIC KEY-----'
      }
   },
   mounted(){
@@ -374,7 +381,16 @@ export default {
 			ids[key] = this.gzcouse[key].id;
 		}
 		console.log(ids);
-		apply({username:this.username,company_id:this.companyid,truename:this.truename,sex:this.sex,mobile:this.mobile,code:this.vcode,course_ids:ids}).then(res=>{
+    let jiami1=[{username:this.username,company_id:this.companyid,truename:this.truename,sex:this.sex}]
+    let jiami2=[{mobile:this.mobile,code:this.vcode,course_ids:ids}]
+    let jiami3=JSON.stringify(jiami1)
+    let jiami4=JSON.stringify(jiami2)
+    var encrypt = new JSEncrypt();
+    encrypt.setPublicKey(this.miyao);
+    var encrypted1 = encrypt.encrypt(jiami3);
+    var encrypted2 = encrypt.encrypt(jiami4);
+    console.log('这是加密之后的' + encrypted1+encrypted2);
+    apply({k1:encrypted1,k2:encrypted2}).then(res=>{
 			console.log(res);
 			let data = res.data;
 			if(res.code == 0){

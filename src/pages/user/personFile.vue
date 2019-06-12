@@ -111,6 +111,7 @@
       loginout() {
         logout({}).then(res => {
           removeStore("user");
+
           this.$vux.toast.show({
             text: '退出成功',
             type: 'text',
