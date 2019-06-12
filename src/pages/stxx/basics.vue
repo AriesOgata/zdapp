@@ -8,13 +8,13 @@
       </div>
       <div class="cen1">
         <grid cols="3">
-          <grid-item label="真题演练" :link="{ path: '/basics'}">
+          <grid-item label="真题演练" :link="{ path: '/'}">
             <img class="cen1-i" slot="icon" src="../../images/t4.png">
           </grid-item>
-          <grid-item label="模拟考试" :link="{ path: '/basics'}">
+          <grid-item label="模拟考试" :link="{ path: '/moni',query:{basicid:this.id}}">
             <img class="cen1-i" slot="icon" src="../../images/t2.png">
           </grid-item>
-          <grid-item label="综合考试" :link="{ path: '/basics'}">
+          <grid-item label="综合考试" :link="{ path: '/'}">
             <img class="cen1-i" slot="icon" src="../../images/t3.png">
           </grid-item>
         </grid>
@@ -29,8 +29,10 @@
         name: "basics",
       data(){
         return{
-          basicsList:[]
+          basicsList:[],
+          id:this.$route.query.basicid
         }
+
       },
       components:{
         Grid,GridItem

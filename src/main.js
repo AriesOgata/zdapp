@@ -3,13 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
 import store from './store/'
 import ajax from './config/ajax'
 import './config/rem'
 import '@/assets/css/app.css'/*引入公共样式*/
 import '@/assets/css/bdmap.css'/*引入公共样式*/
 import { ToastPlugin} from 'vux'
-
+Vue.config.productionTip = false
+Vue.use(ElementUI)
 Vue.use(ToastPlugin)
 
 Vue.config.productionTip = false
@@ -21,9 +25,6 @@ const axios = require('axios')
 Vue.prototype.$ajax = axios;
 
 //axios.defaults.withCredentials=true;
-
-
-
 
 
 
@@ -43,6 +44,7 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+
 })
 

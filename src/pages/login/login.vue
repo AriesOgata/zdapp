@@ -47,7 +47,7 @@
         registration_data:{
           pwdType:"password",
           src:require("../../images/login_kan1.png")
-        }   
+        }
       }
     },
     methods:{
@@ -75,7 +75,7 @@
           alert("请输入正确的密码");
           return
         }
-        
+
         loginForm({username:name,password:pass}).then(res=>{
           let data=res.data;
           console.log(res);
@@ -92,13 +92,14 @@
               position: 'middle'
             })
             setStore("user",name)
+            setStore("eletoken",res.data.token)
             setTimeout(()=>{
               this.$router.push("/personFile");
             },1000)
           }
-       }); 
+       });
       }
-    } 
+    }
   }
 
 </script>
@@ -124,7 +125,7 @@ body,html{
   color: #5ebf83;
   fill:#5ebf83;
   font-size: .7rem;
-}  
+}
 .form_box{
   position: absolute;
   width: 100%;

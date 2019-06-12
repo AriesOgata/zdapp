@@ -49,7 +49,9 @@ import mycourse from '@/pages/stxx/mycourse'
 
 import basics from '@/pages/stxx/basics'
 
+import moni from '@/pages/stxx/moni'
 
+import selectquestions from '@/pages/stxx/selectquestions'
 
 Vue.use(Router)
 
@@ -255,6 +257,17 @@ export default new Router({
       path:'/basics',
       name:'basics',
       component:basics
+    },
+    {
+      path:'/moni',
+      name:'moni',
+      component:moni
+    },
+    {
+      path:'/selectquestions',
+      name:'selectquestions',
+      component:selectquestions
     }
   ]
-})
+});
+

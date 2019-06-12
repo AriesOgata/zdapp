@@ -1,11 +1,15 @@
 import axios from 'axios'
 import qs from 'qs'
 
+import {getStore} from 'src/config/mUtils'
+
 // axios 配置
 axios.defaults.baseURL = 'http://zdapp.808w.com';
 axios.defaults.timeout = 117000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
+let token=getStore('eletoken')
+axios.defaults.headers.common['Authentication-Token'] = token;
 
 //POST传参序列化
 axios.interceptors.request.use((config) => {
@@ -127,7 +131,10 @@ export const myOrder = (params) => fetch('POST','/app/order/index/username/admin
 export const myexam = (params) => fetch('GET','/exam/index/index/username/admin',params);
 //学习考试接口
 export const basics = (params) => fetch('GET','/exam/exam_paper/index',params);
-
+//
+export const selectquestions = (params) => fetch('GET','/exam/exam_paper/selectquestions',params);
+//版本更新
+export const getVersion = (params) => fetch('GET','/app/version/version/username/admin',params);
 
 
 

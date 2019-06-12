@@ -81,7 +81,7 @@
 <script>
   import footNav from 'src/components/footNav'
   import {Flexbox, FlexboxItem, Group, Cell,} from 'vux'
-  import {loginCheck, logout} from 'src/service/api';
+  import {loginCheck, logout,getVersion} from 'src/service/api';
   import {setStore, getStore, removeStore} from 'src/config/mUtils'
 
   export default {
@@ -89,6 +89,7 @@
       return {
         username: "",
         btn: ["确定升级", "取消"],
+        message:{}
       }
     },
     components: {
@@ -126,51 +127,50 @@
           return
         })
       },
-      svn(t) {
-        var xhr_svn = new plus.net.XMLHttpRequest();
-        xhr_svn.onreadystatechange = function () {
-          if (xhr_svn.readyState == 4) {
-            if (xhr_svn.status == 200) {
-              var res = JSON.parse(xhr_svn);
-              if (res.state == 'yes') {
-                if (res.mark != t) {
-                  var upr;
-                  plus.nativeUI.confirm("有新版本发布了，是否更新？", function (e) {
-                    upr = (e.index == 0) ? 'Y' : 'N';
-                    console.log(upr);
-                    if (upr == 'Y') {
-                      var wt = plus.nativeUI.showWaiting("下载更新中，请勿关闭");
-                      var url = res.url;
-                      var dtask = plus.downloader.createDownload(url, {}, function (d, status) {
-                        if (status == 200) {
-                          var path = d.filename;
-                          console.log(d.filename);
-                          plus.runtime.install(path);
-                        } else {
-                          alert("Download failed:" + status);
-                        }
-                      });
-                      dtask.start();
-                    } else {
+      check_updata(){
+        /*this.$dialog.confirm({
+            title: '是否更新到最新版本',
+        }).then(() => {
+        }).catch(() => {
+        });*/
 
-                    }
-                  }, "2.0系统", ["确认", "取消"]);
-                } else {
-                  console.log("最新");
-                }
-              }
-            } else {
-              plus.nativeUI.toast("网络连接错误！")
-            }
-          }
+
+        //plus.runtime.getProperty(plus.runtime.appid,function(inf){
+        //return inf.version;
+        //})
+        let para = {
+          'version':plus.runtime.version,
         }
-        xhr_svn.open("GET", "http://zdapp.808w.com/app/version/version/username/admin");
-        xhr_svn.send();
-      }
+        console.log(para);
+        getVersion(para).then((res) => {
+          this.message = res;
+          console.log("666666666666",res);
+          var url=this.message.url; // 下载文件地址
+          var dtask = plus.downloader.createDownload( url, {}, function ( d, status ) {
+            if ( status == 200 ) { // 下载成功
+              this.$vux.toast.show({
+                text: '已开始下载',
+                type: 'text',
+                position: 'middle'
+              })
+              var path = d.filename;
+              console.log(d.filename);
+              //alert("下载成功"+status+d.filename);
+              plus.runtime.install(path);
+            } else {//下载失败
+              alert( "Download failed: " + status );
+            }
+          });
+          dtask.start();
+        });
+
+      },
     },
     mounted() {
       this.username = getStore("user");
       console.log(this.username)
+      // this.check_updata();
+      console.log(getStore('eletoken'));
     },
   }
 </script>
