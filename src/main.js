@@ -27,7 +27,7 @@ FastClick.attach(document.body)
 import axios from 'axios'
 Vue.prototype.$axios=axios
 
-axios.defaults.baseURL = '/api'  //关键代码
+
 Vue.config.productionTip = false
 
 //axios.defaults.withCredentials=true;
