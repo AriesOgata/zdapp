@@ -7,38 +7,29 @@
       </x-header>
     </div>
 
-    <tab :line-width = '1'>
-      <tab-item v-for="(item,index) in newslist" :key="item.id" :selected="item.id===1" @on-item-click="tab(index)" >{{item.name}}</tab-item>
-    </tab>
 
-
-    <div class="course_list" v-for="(item,index) in newslist" v-show="index==num">
-      <ul>
-        <li class="course_li" v-for="items in myCourseList">
-          <section >
-            <img src="../../images/banner.png" alt="" class="course_img">
-          </section>
-          <div class="course_txt">
-            <p class="course_txt_title">
-              <span class="ellipsis">{{items.title}}</span>
-              <i></i>
-            </p>
-            <p class="course_price">￥850</p>
-            <div class="course_class">
-              <span>{{item.name}}</span>
-            </div>
-            <div class="course_box_btn">
-              <router-link :to="{ path: '/courseDetail', query: {id:items.id}}"   class="course_btn">
-                试听
-              </router-link>
-              <router-link :to="{ path: '/courseDetail', query: {id:items.id}}"   class="course_btn">
-                购买
-              </router-link>
-            </div>
+    <ul class="bg">
+      <router-link class="course_li" v-for="item in myCourseList" tag="li" :to="{ path: '/courseDetail', query: {id:item.id}}">
+        <section >
+          <img :src="imgurl+item.small_picture" alt="" class="course_img">
+        </section>
+        <div class="course_txt">
+          <p class="course_txt_title">
+            <span class="ellipsis">{{item.title}}</span>
+            <i></i>
+          </p>
+          <div class="course_class">
+            <span>{{item.title}}</span>
           </div>
-        </li>
-      </ul>
-    </div>
+          <div class="course_box_btn">
+            <router-link :to="{ path: '/courseDetail', query: {id:item.id}}"   class="course_btn">
+              播放
+            </router-link>
+          </div>
+        </div>
+      </router-link>
+    </ul>
+
 
   </div>
 </template>
@@ -68,7 +59,8 @@
           borderColor: '#333'
         },
         id:[],
-        ids:[1,2,3,191,197,199]
+        ids:[1,2,3,191,197,199],
+        imgurl:'http://zdapp.808w.com'
       }
     },
     methods:{
@@ -83,10 +75,6 @@
       }
     },
     mounted(){
-      courseList().then(res => {
-        this.newslist = res.data
-        console.log(this.newslist);
-      })
       myCourse().then(res=>{
         this.myCourseList=res.data;
         console.log(this.myCourseList);
@@ -145,11 +133,16 @@
   .course_list{
     background: #fff;
   }
+  /*.bg{*/
+    /*background-color: white;*/
+  /*}*/
   .course_li{
     display: -ms-flexbox;
     display: flex;
     border-bottom: .025rem solid #f1f1f1;
     padding: .7rem .8rem;
+    background-color: white;
+    margin-top: 0.5rem;
   }
   .course_img{
     width: 5rem;

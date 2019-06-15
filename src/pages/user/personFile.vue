@@ -41,7 +41,7 @@
           </div>
         </flexbox-item>
         <flexbox-item>
-          <div class="person_listIcon" @click="empty('我的动态')">
+          <div class="person_listIcon" @click="checkUpdate">
             <div class="person_list_img">
               <img src="../../images/person_icon4.png" alt="">
             </div>
@@ -83,13 +83,15 @@
   import {Flexbox, FlexboxItem, Group, Cell,} from 'vux'
   import {loginCheck, logout,getVersion} from 'src/service/api';
   import {setStore, getStore, removeStore} from 'src/config/mUtils'
+  import '../../lib/mui/js/mui.min'
 
   export default {
     data() {
       return {
         username: "",
-        btn: ["确定升级", "取消"],
-        message:{}
+        wgtVer:null,
+        checkUrl:'http://demo.dcloud.net.cn/test/update/check.php',
+        wgtUrl:'http://zdapp.808w.com/upload/version/H500784D1.wgt'
       }
     },
     components: {
@@ -128,50 +130,89 @@
           return
         })
       },
-      check_updata(){
-        /*this.$dialog.confirm({
-            title: '是否更新到最新版本',
-        }).then(() => {
-        }).catch(() => {
-        });*/
-
-
-        //plus.runtime.getProperty(plus.runtime.appid,function(inf){
-        //return inf.version;
-        //})
-        let para = {
-          'version':plus.runtime.version,
-        }
-        console.log(para);
-        getVersion(para).then((res) => {
-          this.message = res;
-          console.log("666666666666",res);
-          var url=this.message.url; // 下载文件地址
-          var dtask = plus.downloader.createDownload( url, {}, function ( d, status ) {
-            if ( status == 200 ) { // 下载成功
-              this.$vux.toast.show({
-                text: '已开始下载',
-                type: 'text',
-                position: 'middle'
-              })
-              var path = d.filename;
-              console.log(d.filename);
-              //alert("下载成功"+status+d.filename);
-              plus.runtime.install(path);
-            } else {//下载失败
-              alert( "Download failed: " + status );
-            }
-          });
-          dtask.start();
+      plusReady(){
+        plus.runtime.getProperty(plus.runtime.appid,function(inf){
+          this.wgtVer=inf.version;
+          console.log("当前应用版本："+this.wgtVer);
         });
+      },
+      checkUpdate(){
+        if(window.plus){
+          var that=this
+          plus.runtime.getProperty(plus.runtime.appid,function(inf){
+            that.wgtVer=inf.version;
+            console.log("当前应用版本："+that.wgtVer);
+          });
+          plus.nativeUI.showWaiting("检测更新...");
+          var xhr=new XMLHttpRequest();
+          xhr.onreadystatechange=function () {
+            switch(xhr.readyState){
+              case 4:
+                plus.nativeUI.closeWaiting();
+                if(xhr.status==200){
+                  console.log("检测更新成功："+xhr.responseText);
+                  var newVer=xhr.responseText;
+                  console.log(that.wgtVer);
+                  if(that.wgtVer&&newVer&&(that.wgtVer!=newVer)){
+                    that.downWgt();
+                  }else{
+                    plus.nativeUI.alert("无新版本可更新！");
+                  }
+                }else{
+                  console.log("检测更新失败！");
+                  plus.nativeUI.alert("检测更新失败！");
+                }
+                break;
+              default:
+                break;
+            }
+          }
+          xhr.open('GET',this.checkUrl);
+          xhr.send();
+        }else{
+          console.log("pc无法执行plus命令");
+        }
 
       },
-    },
+      downWgt(){
+        var that=this
+        plus.nativeUI.showWaiting("下载wgt文件...");
+        plus.downloader.createDownload( this.wgtUrl, {filename:"_doc/update/"}, function(d,status){
+          if ( status == 200 ) {
+            console.log("下载wgt成功："+d.filename);
+            that.installWgt(d.filename); // 安装wgt包
+          } else {
+            console.log("下载wgt失败！");
+            plus.nativeUI.alert("下载wgt失败！");
+          }
+          plus.nativeUI.closeWaiting();
+        }).start();
+      },
+      installWgt(path){
+    plus.nativeUI.showWaiting("安装wgt文件...");
+    plus.runtime.install(path,{},function(){
+      plus.nativeUI.closeWaiting();
+      console.log("安装wgt文件成功！");
+      plus.nativeUI.alert("应用资源更新完成！",function(){
+        plus.runtime.restart();
+      });
+    },function(e){
+      plus.nativeUI.closeWaiting();
+      console.log("安装wgt文件失败["+e.code+"]："+e.message);
+      plus.nativeUI.alert("安装wgt文件失败["+e.code+"]："+e.message);
+    });
+  }
+  },
     mounted() {
       this.username = getStore("user");
       console.log(this.username)
       // this.check_updata();
       console.log(getStore('eletoken'));
+      // if(window.plus){
+      //   this.plusReady();
+      // }else{
+      //   document.addEventListener('plusready',this.plusReady,false);
+      // }
     },
   }
 </script>

@@ -5,7 +5,7 @@ import qs from 'qs'
 import {getStore} from 'src/config/mUtils'
 
 // axios 配置
-axios.defaults.baseURL = 'http://zdapp.808w.com';
+axios.defaults.baseURL = '/api';
 axios.defaults.timeout = 117000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
@@ -132,7 +132,7 @@ export const courseList = (params) => fetch('GET','/app/course/courseshow',param
 //工种课程内容
 export const Info = (params) => fetch('GET','/app/course/info',params);
 //我的课程接口
-export const myCourse = (params) => fetch('POST','/app/my_course/index/username/admint',params);
+export const myCourse = (params) => fetch('POST','/app/my_course/index/username/admin',params);
 //课程收藏接口
 export const mySc = (params) => fetch('POST','/app/my_course/course_favorite/username/admin',params);
 //删除收藏

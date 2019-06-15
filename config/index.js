@@ -8,7 +8,7 @@ module.exports = {
   dev: {
     env: require('./dev.env'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: './',
+    assetsPublicPath: '/',
     proxyTable: {
       '/api': {
         target: 'http://zdapp.808w.com', //设置你调用的接口域名和端口号 别忘了加http
